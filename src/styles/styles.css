@@ -75,7 +75,7 @@
     outline: 0;
     background:whitesmoke;
     margin-left: -50px;
-    margin-top: 90px;
+    margin-top: 45px;
 }
 .input-lastname{
     height: 1.75rem;
@@ -137,6 +137,7 @@
     font-size: 11px;
 }
 .violation-check-text{
+    padding-top: 25px;
     font-weight: bold;
     color: gray;
     font-size: 11px;
@@ -344,6 +345,7 @@
     margin-top: -1.35rem;
     margin-left: 2rem;
 }
+
 .right-pane1{
     
     align-items: center;
