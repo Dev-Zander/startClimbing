@@ -8,7 +8,8 @@ let initialState = {
      phoneNumber: '',
      ageCheck:'',
      lawViolation: '',
-     tosAcknoledgeMent:''
+     tosAcknoledgeMent:'',
+     confirmationNum:''
     }
 
 
@@ -48,7 +49,9 @@ export default function reducer(state = initialState, action){
         let newEmail = Object.assign({}, state, {emailAddress: action.payload})
         return newEmail
         case NEW_PHONE:
-        let newPhone = Object.assign({}, state, {phoneNumber: action.payload})
+        let newPhone = Object.assign({}, state, {phoneNumber: action.payload,
+            confirmationNum: 'D'+ Math.floor(Math.random() * action.payload * 10)
+        })
         return newPhone
         case NEW_AGECHECK:
         let newAge = Object.assign({}, state, {ageCheck: action.payload})

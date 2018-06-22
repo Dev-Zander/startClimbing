@@ -190,7 +190,7 @@
     font-size: .9rem;
 }
 .left-pane-map{
-    margin-top: 15px;
+    margin-top: 20px;
     margin-left: 25px;
     height: 275px;
     width: 275px;
@@ -349,7 +349,7 @@
 .right-pane1{
     
     align-items: center;
-    height: 34rem;
+    height: 45rem;
     width: 425px;
     background-color: whitesmoke;
     display: flex;
@@ -360,7 +360,7 @@
    
 }
 .left-pane1{
-    height: 32rem;
+    height: 45rem;
     width: 325px;
     background-color: white;
 }
@@ -375,9 +375,9 @@
 }
 .conf-text{
     text-align: left;
-    font-size: 15px;
+    font-size: 18px;
     margin-left: -2rem;
-    margin-top:1rem;
+    margin-top:5rem;
 }
 .info{
     color:red;
