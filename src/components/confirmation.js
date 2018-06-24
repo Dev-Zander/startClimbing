@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import '../styles/styles.css';
 import Map from './gmaps'
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { NewGuestCount, NewTime, NewFirstName, NewLastName, NewMiddleInitial, NewEmail, NewPhone, NewAge, NewLaw, NewTos } from '../redux/reducer';
 
@@ -12,7 +11,9 @@ import { NewGuestCount, NewTime, NewFirstName, NewLastName, NewMiddleInitial, Ne
 class Confirmation extends Component {
     constructor(props){
         super(props)
-      
+      this.state = {
+          testing:''
+      }
     }
 
 

@@ -7,6 +7,9 @@ const massive = require('massive');
 const bodyParser = require('body-parser');
 const checkForSession = require('../server/middlewares/checkForSessions');
 const registerController = require('./controllers/registerController');
+const guestController = require('./controllers/guestController');
+const loginController = require('./controllers/loginController');
+
 
 
 const {
@@ -22,18 +25,18 @@ const {
 
 const app = express();
 
-massive(CONNECTION_STRING).then(db =>{
+massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
 })
 
 app.use(bodyParser.json())
 
 app.use(session({
-    secret:SESSION_SECRET,
-    resave:false,
-    saveUninitialized:true,
-    cookie:{
-        maxAge:300000,
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 300000,
         httpOnly: true
     }
 }))
@@ -52,7 +55,7 @@ passport.use(new Auth0Strategy({
 },
     function (accessToken, refreashToken, extraParams, profile, done) {
         const db = app.get('db')
-        db.find_user([profile.id]).then(users => {
+        db.find_user([profile.displayName]).then(users => {
             if (!users[0]) {
                 db.create_user([profile.displayName, profile.id]).then(res => {
                     return done(null, res[0].auth_id)
@@ -65,25 +68,41 @@ passport.use(new Auth0Strategy({
     }
 ))
 
-passport.serializeUser((id, done) => {
-    return done(null, id)
+passport.serializeUser((profile, done) => {
+    done(null, profile)
 })
 
-passport.deserializeUser((id, done) => {
-    
-    app.get('db').find_user([id]).then(res => {
-        
-        return done(null, res[0])
-    })
+passport.deserializeUser((profile, done) => {
+
+    done(null, profile)
 })
+
 
 app.get('/auth', passport.authenticate('auth0'))
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: `${process.env.HOMEPAGE}#/dashboard`,
+    successRedirect: `${process.env.HOMEPAGE}#/admin`,
     failureRedirect: `${process.env.HOMEPAGE}`
 }))
 
+function isAdmin(req, res, next) {
+    if (!req.user) {
+        return res.status(403).send(false)
+
+    } else {
+        const db = req.app.get('db')
+        db.checkAdmin([req.user]).then(response => {
+            if (response[0].is_admin !== true) {
+                return res.status(403).send(false)
+            }
+        })
+    }
+    next()
+}
+
+
+app.get('/api/destroy', loginController.destroy)
+app.get('/api/getgueslist', isAdmin, guestController.getGuestList)
 app.post('/api/register', registerController.addPerson)
+app.get('/api/verifyadmin', registerController.checkAdmin)
 
-
-app.listen(SERVER_PORT, ()=> console.log(`Listening on port: ${SERVER_PORT}`))
+app.listen(SERVER_PORT, () => console.log(`Listening on port: ${SERVER_PORT}`))

@@ -137,7 +137,7 @@ class Registration extends Component {
                         <div className="right-buttons">
                             <Link to="/homepage"> <button className="dark-button">Back</button></Link>
 
-                            {this.props.time !== '0' && this.props.firstName.length >= 3 && this.props.lastName.length >= 3 && this.props.emailAddress.length >=5 && this.props.phoneNumber.length === 10 &&  this.props.ageCheck !== '' && this.props.lawViolation !== '' && this.props.tosAcknoledgeMent !== "" ?
+                            {this.props.time !== 0 && this.props.firstName.length >= 3 && this.props.lastName.length >= 3 && this.props.emailAddress.length >=5 && this.props.phoneNumber.length === 10 &&  this.props.ageCheck !== '' && this.props.lawViolation !== '' && this.props.tosAcknoledgeMent !== "" ?
                             <Link to="/confirmation"><button style={{backgroundColor:'green',
                                                                     color:'white'}} onClick={()=>{this.handleSubmitReg()}} className="light-button">Confirm</button></Link>:
                             <button style={{backgroundColor:'red'}} onClick={()=>{this.handleError()}} className="light-button">Confirm</button>
