@@ -131,7 +131,11 @@ class Registration extends Component {
                             </select>
                         </div>
                         <div className="violation-check-text">
-                            <input value="TosAccepted" onChange={(e) => { this.props.NewTos(e.target.value) }} className="tos-validate" type="checkbox" />
+                            {this.props.tosAcknoledgeMent !== "TosAccepted" ?
+                            <input value="TosAccepted" onChange={(e) => { this.props.NewTos(e.target.value) }}  className="tos-validate" type="checkbox" />:
+                            <input value="TosAccepted" onChange={(e) => { this.props.NewTos(e.target.value) }}  className="tos-validate" type="checkbox" checked/>
+                        }
+                            {/* <input value="TosAccepted" onChange={(e) => { this.props.NewTos(e.target.value) }}  className="tos-validate" type="checkbox" /> */}
                             <div className="tos-text">I acknowledge that I have read and agree with  <Link to="/privacy" target="_blank">terms of service.</Link></div>
                         </div>
                         <div className="right-buttons">
