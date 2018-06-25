@@ -65,7 +65,8 @@ class HomePage extends Component {
         return (
 
             <div>
-                <a href={'http://localhost:3210/api/destroy'}><button>Logout</button></a>
+                 <a href={`${process.env.REACT_APP_API_LOGIN}api/destroy`}><button>Logout</button></a>
+                {/* <a href={'http://localhost:3210/api/destroy'}><button>Logout</button></a> */}
                 <h1>This is the Control Panel</h1>
                 <h2>{this.state.error}</h2>
                 <h1>{this.state.guest}</h1>
