@@ -1,5 +1,4 @@
 require('dotenv').config();
-const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
@@ -27,10 +26,6 @@ const {
 const app = express();
 
 app.use( express.static( `${__dirname}/../build` ) );
-
-app.get('*', (req, res)=>{
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-});
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
