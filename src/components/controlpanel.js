@@ -64,21 +64,12 @@ class HomePage extends Component {
 
         return (
 
-<<<<<<< HEAD
-            <div>
-                 <a href={`${process.env.REACT_APP_API_LOGOUT}api/destroy`}><button>Logout</button></a>
-                {/* <a href={'http://localhost:3210/api/destroy'}><button>Logout</button></a> */}
-                <h1>This is the Control Panel</h1>
-                <h2>{this.state.error}</h2>
-                <h1>{this.state.guest}</h1>
-=======
             <div className="admin-main-container">
                 <div className="admin-button-container">
                     <a className="admin-logout-button" href={`${process.env.REACT_APP_API_LOGOUT}api/destroy`}><button>Logout</button></a>
                     {/* <a href={'http://localhost:3210/api/destroy'}><button className="admin-logout-button">Logout</button></a> */}
                     <Link to='/login'><button className="admin-login-button">Login</button></Link>
                 </div>
->>>>>>> 13b53b5a36fe17e8f65e496cc0fac1cc58ff36f9
 
                 <h3>StartClimbing.org Control Panel</h3>
                 <h2 style={{
