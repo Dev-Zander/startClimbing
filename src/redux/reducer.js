@@ -34,7 +34,10 @@ export default function reducer(state = initialState, action){
         let newTotalGuest = Object.assign({}, state, {guestCount : action.payload})
         return newTotalGuest    
         case NEW_TIME:
-        let newTime = Object.assign({}, state, {time:action.payload})  
+        let newTime = Object.assign({}, state, {time:action.payload
+            ,
+            confirmationNum: 'D'+ Math.floor(Math.random() * action.payload * 100000)
+        })  
         return newTime
         case NEW_FIRST_NAME:
         let newFirstName = Object.assign({},state, {firstName: action.payload})
@@ -49,9 +52,7 @@ export default function reducer(state = initialState, action){
         let newEmail = Object.assign({}, state, {emailAddress: action.payload})
         return newEmail
         case NEW_PHONE:
-        let newPhone = Object.assign({}, state, {phoneNumber: action.payload,
-            confirmationNum: 'D'+ Math.floor(Math.random() * action.payload * 10)
-        })
+        let newPhone = Object.assign({}, state, {phoneNumber: action.payload})
         return newPhone
         case NEW_AGECHECK:
         let newAge = Object.assign({}, state, {ageCheck: action.payload})

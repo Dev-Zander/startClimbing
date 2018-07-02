@@ -102,8 +102,19 @@ class Registration extends Component {
                             display:'flex',
                             flexDirection:'column'
                         }} className="right-pane-header">
+                            <h1 style={{color:'blue'}}>Register Now!</h1>
+                            <h2>Space is Limited.</h2>
+                            <h3 style={{
+                                textAlign:'center',
+                                color:'brown'
+                            }}>Gift bags for first 150 registered</h3>
 
-                            <h3>Please complete form to register.</h3>
+                             <h3 style={{
+                                textAlign:'center',
+                                color:'brown'
+                            }}>attendees for each session. </h3>
+
+
                             <div style={{
                                 color:'red'
                             }}><h4>{this.state.error}</h4></div>
@@ -111,11 +122,11 @@ class Registration extends Component {
                         </div>
                         <input onChange={(e) => { this.props.NewFirstName(e.target.value) }} placeholder="First Name" className="input-firstname" />
                         <input onChange={(e) => { this.props.NewLastName(e.target.value) }} placeholder="Last Name" className="input-lastname" />
-                        <input onChange={(e) => { this.props.NewMiddleInitial(e.target.value) }} placeholder="M.I." maxlength="1" className="input-middle" />
+                        {/* <input onChange={(e) => { this.props.NewMiddleInitial(e.target.value) }} placeholder="M.I." maxlength="1" className="input-middle" /> */}
                         <input onChange={(e) => { this.props.NewEmail(e.target.value) }} placeholder="Email Address" className="input-email" />
-                        <input onChange={(e) => { this.props.NewPhone(e.target.value) }} type="number" class="noscroll" placeholder="Phone Number" maxlength="10" className="input-phonenumber" />
+                        {/* <input onChange={(e) => { this.props.NewPhone(e.target.value) }} type="number" class="noscroll" placeholder="Phone Number" maxlength="10" className="input-phonenumber" /> */}
                         <div className="age-check-text">
-                            Are you between the ages of 17 - 34?
+                            Are you over the age of 17?
                 <select onChange={(e) => { this.props.NewAge(e.target.value) }} className="select-age">
                                 <option >Select</option>
                                 <option value="Yes">Yes</option>
@@ -123,12 +134,12 @@ class Registration extends Component {
                             </select>
                         </div>
                         <div className="violation-check-text">
-                            Any Major Law Violations?
+                            {/* Any Major Law Violations?
                 <select onChange={(e) => { this.props.NewLaw(e.target.value) }} className="select-age">
                                 <option>Select</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
-                            </select>
+                            </select> */}
                         </div>
                         <div className="violation-check-text">
                             {this.props.tosAcknoledgeMent !== "TosAccepted" ?
@@ -140,8 +151,8 @@ class Registration extends Component {
                         </div>
                         <div className="right-buttons">
                             <Link to="/homepage"> <button className="dark-button">Back</button></Link>
-
-                            {this.props.time !== 0 && this.props.firstName.length >= 3 && this.props.lastName.length >= 3 && this.props.emailAddress.length >=5 && this.props.phoneNumber.length === 10 &&  this.props.ageCheck !== '' && this.props.lawViolation !== '' && this.props.tosAcknoledgeMent !== "" ?
+                            {/* && this.props.phoneNumber.length === 10 &&  this.props.ageCheck !== '' && this.props.lawViolation !== ''  */}
+                            {this.props.time !== 0 && this.props.firstName.length >= 3 && this.props.lastName.length >= 3 && this.props.emailAddress.length >=5 && this.props.tosAcknoledgeMent !== "" &&  this.props.ageCheck !== '' ?
                             <Link to="/confirmation"><button style={{backgroundColor:'green',
                                                                     color:'white'}} onClick={()=>{this.handleSubmitReg()}} className="light-button">Confirm</button></Link>:
                             <button style={{backgroundColor:'red'}} onClick={()=>{this.handleError()}} className="light-button">Confirm</button>
